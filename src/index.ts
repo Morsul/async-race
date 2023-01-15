@@ -1,13 +1,6 @@
-import './index.css';
-import { divClassName } from './basic';
-function component() {
-  const element = document.createElement('div');
-  const elementClass: divClassName = { className: 'hello' };
+import { App } from './components/view/app';
 
-  element.innerHTML = 'test2';
-  element.classList.add(elementClass.className);
+import './index.scss';
 
-  return element;
-}
-
-document.body.appendChild(component());
+const app = new App();
+app.start();

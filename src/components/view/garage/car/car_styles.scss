@@ -20,6 +20,13 @@
     top: 3px;
     // left: calc(100% - 105px); finish line
   }
+  &-name{
+    position: absolute;
+    left: 100px;
+    top: 3px;
+    margin: 0;
+    font-weight: bold;
+  }
 }
 .race-field{
   &__car{

@@ -1,4 +1,4 @@
-import { App } from './components/view/app';
+import { App } from './app';
 
 import './index.scss';
 

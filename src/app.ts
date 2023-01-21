@@ -1,9 +1,11 @@
-import { elementGenerator } from '../controller/taggenerator';
-import { GarageView } from './garage/garagePage';
+import { elementGenerator } from './components/controller/taggenerator';
+import { GarageView } from './components/view/garage/garagePage';
 
 export class App {
   garageView = new GarageView();
-  start = (): void => {
+
+  start = async (): Promise<void> => {
+    //move to header
     const header = elementGenerator.createHTMLElement('header', {});
     const garageButton = elementGenerator.createButton({
       className: 'button button__garage',
@@ -14,6 +16,7 @@ export class App {
       text: 'To Winner',
     });
     header.append(garageButton, winnerButton);
-    document.body.append(header, this.garageView.getGaragePage());
+    //move to header end
+    document.body.append(header, await this.garageView.getGaragePage());
   };
 }

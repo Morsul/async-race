@@ -6,6 +6,7 @@ export class GarageView {
   private _raceField: RaceField;
   private _carCreation: CarCreate;
   private _carEdit: CarMod;
+  private _wrap!: HTMLDivElement;
   constructor() {
     this._carCreation = new CarCreate('Create Car', 'car-creat', 'Type car name here');
     this._carEdit = new CarMod('Update Car', 'car-edit', 'Type car name here');
@@ -15,8 +16,16 @@ export class GarageView {
   }
 
   getGaragePage = async (): Promise<HTMLDivElement> => {
-    const view = elementGenerator.createDiv({ className: 'view view__garage' });
-    view.append(this._carCreation.getCarGenerator(), this._carEdit.getCarGenerator(), this._raceField.getField());
-    return view;
+    this._wrap = elementGenerator.createDiv({ className: 'view view__garage' });
+    this._wrap.append(this._carCreation.getCarGenerator(), this._carEdit.getCarGenerator(), await this._raceField.getField());
+    return this._wrap;
+  };
+
+  show = (state: boolean) => {
+    if (state) {
+      this._wrap.classList.remove('hidden');
+    } else {
+      this._wrap.classList.add('hidden');
+    }
   };
 }

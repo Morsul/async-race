@@ -1,14 +1,27 @@
-
+@mixin disabled-button{
+  &:disabled{
+    opacity: 0.5;
+    box-shadow: 1px 1px 0px 0px, 1px 1px 0px 0px, 1px 1px 0px 0px, 1px 1px 0px 0px, 1px 1px 0px 0px;
+    top: 2px;
+    left: 2px;
+  }
+}
 
 *{
   box-sizing: border-box;
 }
+
+body{
+  overflow-x: hidden;
+}
+
 header{
   display: flex;
   gap: 15px;
   margin-bottom: 25px;
 }
-.button {
+.button
+ {
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
   letter-spacing: 2px;
@@ -24,10 +37,16 @@ header{
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  @include disabled-button;
 }
 
 .button:active , .button.active{
   box-shadow: 0px 0px 0px 0px;
   top: 5px;
   left: 5px;
+  @include disabled-button;
+}
+
+.hidden{
+  display: none;
 }

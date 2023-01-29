@@ -20,13 +20,13 @@ export class CarCreate {
     this._warp.append(this._createInput, this._createColor, this._createButton);
   }
 
-  setButtonFunction(fnCar: TCreateCar): void {
+  setButtonFunction = (fnCar: TCreateCar): void => {
     this._createButton.addEventListener('click', () => {
       fnCar(this._createInput.value, this._createColor.value);
       this._createInput.value = '';
       this._createColor.value = '#000000';
     });
-  }
+  };
 
   getCarGenerator = () => this._warp;
 }
@@ -39,11 +39,14 @@ export class CarMod extends CarCreate {
     this._carId = id;
   };
 
-  setButtonFunction(fnCar: TModCar): void {
+  setButtonFunction = (fnCar: TModCar): void => {
     this._createButton.addEventListener('click', () => {
-      fnCar(this._createInput.value, this._createColor.value, this._carId);
-      this._createInput.value = '';
-      this._createColor.value = '#000000';
+      if (this._carId > 0) {
+        fnCar(this._createInput.value, this._createColor.value, this._carId);
+        this._createInput.value = '';
+        this._createColor.value = '#000000';
+        this._carId = -1;
+      }
     });
-  }
+  };
 }
